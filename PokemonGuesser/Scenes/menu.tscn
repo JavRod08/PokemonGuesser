@@ -1,0 +1,1078 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqj7n5cq7v3x6"]
+
+[ext_resource type="LabelSettings" uid="uid://brmxcb8bin3gv" path="res://Settings/title.tres" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://bdyyultihjigr" path="res://Scripts/menu.gd" id="1_cayip"]
+[ext_resource type="Texture2D" uid="uid://ucddr3so5aov" path="res://Assets/Other/BackgroundPokéball.svg" id="2_jsrd8"]
+[ext_resource type="Texture2D" uid="uid://b5vitcrrwjskw" path="res://Assets/Other/RegionSeparator.svg" id="3_cayip"]
+[ext_resource type="FontFile" uid="uid://c1d0u38rdmmt4" path="res://Assets/Fonts/Pokemon Solid.ttf" id="4_158mb"]
+[ext_resource type="Texture2D" uid="uid://dkx4ignvmuhr8" path="res://Assets/Other/ScoreSeal.svg" id="5_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://b8hk0pmut5h0s" path="res://Assets/Other/check-on.svg" id="6_7qvly"]
+[ext_resource type="Texture2D" uid="uid://dvc7haepkt2ea" path="res://Assets/Other/check-off.svg" id="7_rfqti"]
+[ext_resource type="FontFile" uid="uid://i4pyey2y5wa0" path="res://Assets/Fonts/Pokemon Hollow.ttf" id="7_wbdvm"]
+[ext_resource type="PackedScene" uid="uid://cnsp65druikhs" path="res://Scenes/change_scene_animation.tscn" id="8_q3rjx"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cayip")
+
+[node name="Parallax2D" type="ParallaxBackground" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.80624, 0.96, 0.6624, 1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
+motion_mirroring = Vector2(386.17, 487.17)
+
+[node name="Textures" type="Node2D" parent="Parallax2D/ParallaxLayer"]
+
+[node name="Sprite2DTopLeft" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_jsrd8")
+centered = false
+
+[node name="Sprite2DTopRight" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_jsrd8")
+centered = false
+offset = Vector2(386.17, 0)
+
+[node name="Sprite2DBottomLeft" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_jsrd8")
+centered = false
+offset = Vector2(0, 487.17)
+
+[node name="Sprite2DBottomRight" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_jsrd8")
+centered = false
+offset = Vector2(386.17, 487.17)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 35
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopVSplitContainer" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+
+[node name="TitleTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_cayip")
+stretch_mode = 6
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/TitleTextureButton"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+offset_top = 4.0
+offset_right = 320.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+text = "WHO'S THAT POKÉMON?"
+label_settings = ExtResource("1_1rerr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MiddleVSplitContainer1" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="Settings" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="MarginContainer/ScrollContainer/VBoxContainer/Settings"]
+position = Vector2(15, 10)
+color = Color(1, 1, 1, 0.498)
+polygon = PackedVector2Array(-47, -20, 336, -20, 336, 70, -47, 70)
+uv = PackedVector2Array(-295, -29, 184, -29, 183, 56, -283, 58, -290, -36)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSplitContainer1" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "FORM
+VARIETY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FormCheckButton" type="CheckButton" parent="MarginContainer/ScrollContainer/VBoxContainer/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+theme_override_icons/checked = ExtResource("6_7qvly")
+theme_override_icons/unchecked = ExtResource("7_rfqti")
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/ScrollContainer/VBoxContainer/Settings/HBoxContainer/FormCheckButton"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(62, 35)
+scale = Vector2(1.04545, 1.2)
+texture = ExtResource("7_rfqti")
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="MiddleVSplitContainer12" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="KantoTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/KantoTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/KantoTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "KANTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/KantoTextureButton"]
+modulate = Color(0.783926, 0.715322, 7.70092e-07, 1)
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="KantoScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/KantoTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KantoPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="KantoGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer2" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="JohtoTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/JohtoTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/JohtoTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "JOHTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/JohtoTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+mouse_filter = 2
+texture = ExtResource("5_wwsa2")
+
+[node name="JohtoScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/JohtoTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JohtoPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="JohtoGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer3" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="HoennTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/HoennTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HoennTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "HOENN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/HoennTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="HoennScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HoennTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoennPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="HoennGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer4" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="SinnohTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/SinnohTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/SinnohTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "SINNOH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/SinnohTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="SinnohScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/SinnohTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SinnohPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="SinnohGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer5" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="TeseliaTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/TeseliaTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/TeseliaTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "TESELIA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/TeseliaTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="TeseliaScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/TeseliaTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TeseliaPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="TeseliaGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer6" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="KalosTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/KalosTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/KalosTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "KALOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/KalosTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="KalosScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/KalosTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KalosPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="KalosGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer7" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="AlolaTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/AlolaTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/AlolaTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "ALOLA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/AlolaTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="AlolaScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/AlolaTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AlolaPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="AlolaGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer8" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="GalarTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/GalarTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/GalarTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "GALAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/GalarTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="GalarScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/GalarTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GalarPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="GalarGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer9" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="HisuiTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/HisuiTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HisuiTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "HISUI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/HisuiTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="HisuiScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HisuiTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HisuiPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="HisuiGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer10" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="PaldeaTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/PaldeaTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PaldeaTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "PALDEA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/PaldeaTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="PaldeaScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PaldeaTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PaldeaPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="PaldeaGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="MiddleVSplitContainer11" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+
+[node name="UnknownTextureButton" type="TextureButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/UnknownTextureButton"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("3_cayip")
+
+[node name="RegionLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/UnknownTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_158mb")
+theme_override_font_sizes/font_size = 20
+text = "UNKNOWN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/UnknownTextureButton"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = -25.0
+offset_right = 324.0
+offset_bottom = 32.0
+rotation = 0.575959
+texture = ExtResource("5_wwsa2")
+
+[node name="UnknownScoreLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/UnknownTextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 264.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.575959
+theme_override_font_sizes/font_size = 24
+text = "151"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UnknownPlayButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_wbdvm")
+theme_override_font_sizes/font_size = 21
+text = "START"
+
+[node name="UnknownGridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="BottomVSplitContainer" type="VSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChangeSceneAnimation" parent="." instance=ExtResource("8_q3rjx")]
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/TitleTextureButton" to="." method="_on_title_texture_button_pressed"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/Settings/HBoxContainer/FormCheckButton" to="." method="_on_form_check_button_toggled"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/KantoTextureButton" to="." method="_on_kanto_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/KantoPlayButton" to="." method="_on_kanto_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/JohtoTextureButton" to="." method="_on_johto_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/JohtoPlayButton" to="." method="_on_johto_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HoennTextureButton" to="." method="_on_hoenn_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HoennPlayButton" to="." method="_on_hoenn_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/SinnohTextureButton" to="." method="_on_sinnoh_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/SinnohPlayButton" to="." method="_on_sinnoh_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/TeseliaTextureButton" to="." method="_on_teselia_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/TeseliaPlayButton" to="." method="_on_teselia_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/KalosTextureButton" to="." method="_on_kalos_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/KalosPlayButton" to="." method="_on_kalos_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/AlolaTextureButton" to="." method="_on_alola_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/AlolaPlayButton" to="." method="_on_alola_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/GalarTextureButton" to="." method="_on_galar_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/GalarPlayButton" to="." method="_on_galar_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HisuiTextureButton" to="." method="_on_hisui_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HisuiPlayButton" to="." method="_on_hisui_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/PaldeaTextureButton" to="." method="_on_paldea_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/PaldeaPlayButton" to="." method="_on_paldea_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/UnknownTextureButton" to="." method="_on_unknown_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/UnknownPlayButton" to="." method="_on_unknown_play_button_pressed"]
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

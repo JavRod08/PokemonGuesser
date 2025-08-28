@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://biwtilur85tk3"
+path="res://.godot/imported/Who's That Pokémon.mp3-b91aa9081505b8bb7a07cd4b5fdcd3d6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Who's That Pokémon.mp3"
+dest_files=["res://.godot/imported/Who's That Pokémon.mp3-b91aa9081505b8bb7a07cd4b5fdcd3d6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,246 @@
+[gd_scene load_steps=13 format=3 uid="uid://bb24g3axncndj"]
+
+[ext_resource type="Script" uid="uid://b2ncdwn3vnhum" path="res://Scripts/gameplay.gd" id="1_m34ki"]
+[ext_resource type="FontFile" uid="uid://c1d0u38rdmmt4" path="res://Assets/Fonts/Pokemon Solid.ttf" id="1_wbxth"]
+[ext_resource type="LabelSettings" uid="uid://brmxcb8bin3gv" path="res://Settings/title.tres" id="2_kwrm5"]
+[ext_resource type="Texture2D" uid="uid://ucddr3so5aov" path="res://Assets/Other/BackgroundPokéball.svg" id="2_rlidi"]
+[ext_resource type="FontFile" uid="uid://i4pyey2y5wa0" path="res://Assets/Fonts/Pokemon Hollow.ttf" id="5_r8bcl"]
+[ext_resource type="Theme" uid="uid://chetukm1wcjne" path="res://Settings/option_theme.tres" id="5_urrcd"]
+[ext_resource type="PackedScene" uid="uid://cs7xv5u1kkcqv" path="res://Scenes/correction_animation.tscn" id="6_rlidi"]
+[ext_resource type="PackedScene" uid="uid://cnsp65druikhs" path="res://Scenes/change_scene_animation.tscn" id="7_1qnfl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m34ki"]
+font = ExtResource("5_r8bcl")
+font_size = 30
+font_color = Color(0.154876, 0.154876, 0.154876, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r8bcl"]
+load_path = "res://.godot/imported/pikachu.png-ba1442b918ba6e59c6722cadf17909c5.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m34ki"]
+bg_color = Color(0.921569, 0.278431, 0.113725, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8bcl"]
+font = ExtResource("1_wbxth")
+font_size = 35
+
+[node name="Gameplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m34ki")
+"current_pokémon" = "BULBASAUR"
+
+[node name="Parallax2D" type="ParallaxBackground" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.80624, 0.96, 0.6624, 1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D"]
+motion_mirroring = Vector2(386.17, 487.17)
+
+[node name="Textures" type="Node2D" parent="Parallax2D/ParallaxLayer"]
+
+[node name="Sprite2DTopLeft" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_rlidi")
+centered = false
+
+[node name="Sprite2DTopRight" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_rlidi")
+centered = false
+offset = Vector2(386.17, 0)
+
+[node name="Sprite2DBottomLeft" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_rlidi")
+centered = false
+offset = Vector2(0, 487.17)
+
+[node name="Sprite2DBottomRight" type="Sprite2D" parent="Parallax2D/ParallaxLayer/Textures"]
+texture_repeat = 2
+texture = ExtResource("2_rlidi")
+centered = false
+offset = Vector2(386.17, 487.17)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "WHO'S THAT POKÉMON?"
+label_settings = ExtResource("2_kwrm5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_stretch_ratio = 0.3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_wbxth")
+theme_override_font_sizes/font_size = 20
+text = "Correct: 0 - Incorrect: 0/3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VSplitContainer1" type="VSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.6
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_stretch_ratio = 0.5
+theme_override_fonts/font = ExtResource("1_wbxth")
+theme_override_font_sizes/font_size = 25
+emoji_menu_enabled = false
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_urrcd")
+theme_override_fonts/font = ExtResource("1_wbxth")
+theme_override_font_sizes/font_size = 25
+text_overrun_behavior = 2
+autowrap_mode = 3
+selected = 0
+fit_to_longest_item = false
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "???"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Option 1"
+popup/item_1/id = 1
+popup/item_2/text = "Option 2"
+popup/item_2/id = 2
+
+[node name="Answer" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 25
+text = "PIKACHU"
+label_settings = SubResource("LabelSettings_m34ki")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HSplitContainer"]
+texture_filter = 2
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("CompressedTexture2D_r8bcl")
+expand_mode = 4
+
+[node name="TextureRectAnimated" type="TextureRect" parent="MarginContainer/VBoxContainer/HSplitContainer"]
+texture_filter = 2
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("CompressedTexture2D_r8bcl")
+expand_mode = 4
+
+[node name="VSplitContainer3" type="VSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.2
+
+[node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_r8bcl")
+theme_override_font_sizes/font_size = 30
+text = "SUBMIT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Correction" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+theme_override_styles/panel = SubResource("StyleBoxFlat_m34ki")
+
+[node name="CorrectionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Correction"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+text = "CORRECT"
+label_settings = SubResource("LabelSettings_r8bcl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_r8bcl")
+theme_override_font_sizes/font_size = 16
+text = "NEXT"
+icon_alignment = 2
+
+[node name="CorrectionAnimation" parent="." instance=ExtResource("6_rlidi")]
+
+[node name="CorrectionTimer" type="Timer" parent="CorrectionAnimation"]
+wait_time = 0.8
+
+[node name="NextPokémonTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ChangeSceneAnimation" parent="." instance=ExtResource("7_1qnfl")]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SubmitButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="timeout" from="CorrectionAnimation/CorrectionTimer" to="." method="_on_correction_timer_timeout"]
+[connection signal="timeout" from="NextPokémonTimer" to="." method="_on_next_pokémon_timer_timeout"]

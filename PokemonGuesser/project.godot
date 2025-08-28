@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Pokemon_Guesser"
+config/description="Learn to name all Pokémon in a simple way!"
+config/version="1.0"
+run/main_scene="uid://cmub23ehbly5y"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="uid://c2ni3spjbmktk"
+
+[audio]
+
+buses/default_bus_layout="res://Settings/default_bus_layout.tres"
+
+[autoload]
+
+Global="*res://Scripts/global.gd"
+Music="*res://Scenes/music.tscn"
+
+[display]
+
+window/size/viewport_width=360
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+window/handheld/orientation=1
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

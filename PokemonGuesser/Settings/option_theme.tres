@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://chetukm1wcjne"]
+
+[ext_resource type="FontFile" uid="uid://c1d0u38rdmmt4" path="res://Assets/Fonts/Pokemon Solid.ttf" id="1_ili1w"]
+
+[resource]
+default_font = ExtResource("1_ili1w")
+default_font_size = 17
