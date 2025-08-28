@@ -1,8 +1,5 @@
 # PokemonGuesser
-An app (APK) to learn Pokémon names and forms in an easy and simple way.
-
-# How to start
-Download the APK file in this repository and install it, preferably on an Android mobile phone. The app should have a Pokéball-like icon with an interrogation inside and the name "Who's that Pokémon?".
+An app (APK) to learn Pokémon names and forms in an easy and simple way. The APK file isn't directly available in this repository as it is more than 100 MB. These are the GODOT files.
 
 # How to play
 When you start the app you will be in the main menu. From there, you may choose your audio preferences and then select a game mode.
